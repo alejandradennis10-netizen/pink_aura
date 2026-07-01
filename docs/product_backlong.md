@@ -1,119 +1,119 @@
-# Product Backlog - Sistema CRUD de Cosméticos
+# Product Backlog - Cosmetics CRUD System
 
-## Epic 1: Registro de Cosméticos
+## Epic 1: Cosmetic Registration
 
 ### User Story 1
 
-**Como** administrador del sistema,
+**As** a system administrator,
 
-**Quiero** registrar un nuevo cosmético,
+**I want** to register a new cosmetic product,
 
-**Para** mantener actualizado el inventario.
+**So that** I can keep the inventory up to date.
 
 ### Acceptance Criteria
 
-#### Escenario exitoso
+#### Successful Scenario
 
 ```gherkin
-Feature: Registrar un cosmético
+Feature: Register a Cosmetic Product
 
-Scenario: Registro exitoso
+Scenario: Successful registration
 
-Given que el administrador se encuentra en el formulario de registro
-When ingresa correctamente el nombre, categoría, marca, precio, stock y fecha de caducidad y presiona "Guardar"
-Then el sistema registra el producto en la base de datos
-And muestra el mensaje "Producto registrado correctamente"
+Given the administrator is on the product registration form
+When the administrator enters the product name, category, brand, price, stock, and expiration date correctly and clicks the "Save" button
+Then the system saves the cosmetic product in the database
+And displays the message "Product registered successfully"
 ```
 
-#### Escenario no exitoso
+#### Unsuccessful Scenario
 
 ```gherkin
-Feature: Registrar un cosmético
+Feature: Register a Cosmetic Product
 
-Scenario: Registro fallido
+Scenario: Registration fails due to missing required fields
 
-Given que el administrador se encuentra en el formulario de registro
-When deja uno o más campos obligatorios vacíos y presiona "Guardar"
-Then el sistema no registra el producto
-And muestra el mensaje "Complete todos los campos obligatorios"
+Given the administrator is on the product registration form
+When one or more required fields are left empty and the administrator clicks the "Save" button
+Then the system does not save the cosmetic product
+And displays the message "Please complete all required fields"
 ```
 
 ---
 
-## Epic 2: Actualización de Cosméticos
+## Epic 2: Cosmetic Update
 
 ### User Story 2
 
-**Como** administrador del sistema,
+**As** a system administrator,
 
-**Quiero** actualizar la información de un cosmético,
+**I want** to update the information of a cosmetic product,
 
-**Para** mantener los datos correctos.
+**So that** the inventory information remains accurate.
 
 ### Acceptance Criteria
 
-#### Escenario exitoso
+#### Successful Scenario
 
 ```gherkin
-Feature: Actualizar un cosmético
+Feature: Update a Cosmetic Product
 
-Scenario: Actualización exitosa
+Scenario: Successful update
 
-Given que el producto ya está registrado
-When el administrador modifica la información y presiona "Actualizar"
-Then el sistema guarda los cambios
-And muestra el mensaje "Producto actualizado correctamente"
+Given the cosmetic product already exists in the system
+When the administrator edits the product information and clicks the "Update" button
+Then the system updates the product information in the database
+And displays the message "Product updated successfully"
 ```
 
-#### Escenario no exitoso
+#### Unsuccessful Scenario
 
 ```gherkin
-Feature: Actualizar un cosmético
+Feature: Update a Cosmetic Product
 
-Scenario: Actualización fallida
+Scenario: Update fails because the product does not exist
 
-Given que el administrador busca un producto con un ID que no existe
-When intenta actualizar la información y presiona "Actualizar"
-Then el sistema no realiza ninguna modificación
-And muestra el mensaje "Producto no encontrado"
+Given the administrator searches for a product using an ID that does not exist
+When the administrator attempts to update the product information
+Then the system does not update any information
+And displays the message "Product not found"
 ```
 
 ---
 
-## Epic 3: Eliminación de Cosméticos
+## Epic 3: Cosmetic Deletion
 
 ### User Story 3
 
-**Como** administrador del sistema,
+**As** a system administrator,
 
-**Quiero** eliminar un cosmético registrado,
+**I want** to delete a cosmetic product,
 
-**Para** mantener actualizado el inventario.
+**So that** I can remove products that are no longer available.
 
 ### Acceptance Criteria
 
-#### Escenario exitoso
+#### Successful Scenario
 
 ```gherkin
-Feature: Eliminar un cosmético
+Feature: Delete a Cosmetic Product
 
-Scenario: Eliminación exitosa
+Scenario: Successful deletion
 
-Given que el producto existe en la base de datos
-When el administrador selecciona el producto y presiona "Eliminar"
-Then el sistema elimina el registro
-And muestra el mensaje "Producto eliminado correctamente"
+Given the cosmetic product exists in the database
+When the administrator selects the product and clicks the "Delete" button
+Then the system removes the product from the database
+And displays the message "Product deleted successfully"
 ```
 
-#### Escenario no exitoso
+#### Unsuccessful Scenario
 
 ```gherkin
-Feature: Eliminar un cosmético
+Feature: Delete a Cosmetic Product
 
-Scenario: Eliminación fallida
+Scenario: Deletion fails because the product does not exist
 
-Given que el administrador ingresa un ID que no existe
-When presiona el botón "Eliminar"
-Then el sistema no elimina ningún registro
-And muestra el mensaje "Producto no encontrado"
+Given the administrator enters a product ID that does not exist
+When the administrator clicks the "Delete" button
+Then the system does not delete any product
+And displays the message "Product not found"
 ```
