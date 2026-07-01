@@ -10,12 +10,7 @@
 
 **So that** I can keep the inventory up to date.
 
-### Acceptance Criteria
-
-- The product name is required.
-- The category, brand, price, stock, and expiration date must be entered.
-- The system must save the product in the database.
-- A confirmation message must be displayed after a successful registration.
+### Acceptance Criteria (Gherkin)
 
 #### Successful Scenario
 
@@ -25,7 +20,7 @@ Feature: Create a Cosmetic Product
 Scenario: Successful product registration
 
 Given the administrator is on the product registration form
-When the administrator enters valid product information and clicks the "Save" button
+When the administrator enters a valid product name, category, brand, price, stock, and expiration date and clicks the "Save" button
 Then the system stores the cosmetic product in the database
 And displays the message "Product registered successfully"
 ```
@@ -39,7 +34,7 @@ Scenario: Registration fails because required fields are empty
 
 Given the administrator is on the product registration form
 When one or more required fields are left empty and the administrator clicks the "Save" button
-Then the system does not save the product
+Then the system does not save the cosmetic product
 And displays the message "Please complete all required fields"
 ```
 
@@ -53,20 +48,16 @@ And displays the message "Please complete all required fields"
 
 **I want** to view the list of cosmetic products,
 
-**So that** I can review the registered products.
+**So that** I can review all registered products.
 
-### Acceptance Criteria
-
-- The system must display all registered cosmetic products.
-- Each product must show its basic information.
-- If there are no registered products, the system must notify the administrator.
+### Acceptance Criteria (Gherkin)
 
 #### Successful Scenario
 
 ```gherkin
 Feature: Read Cosmetic Products
 
-Scenario: Successfully display the product list
+Scenario: Display all registered cosmetic products
 
 Given cosmetic products are stored in the database
 When the administrator opens the product list
@@ -78,7 +69,7 @@ Then the system displays all registered cosmetic products
 ```gherkin
 Feature: Read Cosmetic Products
 
-Scenario: No products available
+Scenario: No cosmetic products found
 
 Given there are no cosmetic products stored in the database
 When the administrator opens the product list
@@ -94,15 +85,11 @@ And displays the message "No products found"
 
 **As** a system administrator,
 
-**I want** to update cosmetic product information,
+**I want** to update the information of a cosmetic product,
 
 **So that** I can keep the inventory accurate.
 
-### Acceptance Criteria
-
-- The administrator must be able to edit an existing product.
-- The updated information must be saved correctly.
-- The system must display a confirmation message after the update.
+### Acceptance Criteria (Gherkin)
 
 #### Successful Scenario
 
@@ -111,9 +98,9 @@ Feature: Update a Cosmetic Product
 
 Scenario: Successful product update
 
-Given the cosmetic product already exists
+Given the cosmetic product already exists in the database
 When the administrator updates the product information and clicks the "Update" button
-Then the system saves the new information
+Then the system saves the updated information
 And displays the message "Product updated successfully"
 ```
 
@@ -122,10 +109,10 @@ And displays the message "Product updated successfully"
 ```gherkin
 Feature: Update a Cosmetic Product
 
-Scenario: Product not found
+Scenario: Update fails because the product does not exist
 
-Given the administrator searches for a product ID that does not exist
-When the administrator attempts to update the product
+Given the administrator searches for a cosmetic product using an ID that does not exist
+When the administrator clicks the "Update" button
 Then the system does not update any information
 And displays the message "Product not found"
 ```
@@ -138,15 +125,11 @@ And displays the message "Product not found"
 
 **As** a system administrator,
 
-**I want** to delete cosmetic products,
+**I want** to delete a cosmetic product,
 
-**So that** discontinued products are removed from the inventory.
+**So that** I can remove discontinued products from the inventory.
 
-### Acceptance Criteria
-
-- The administrator must be able to delete an existing product.
-- The system must remove the selected product from the database.
-- The system must display a confirmation message after deletion.
+### Acceptance Criteria (Gherkin)
 
 #### Successful Scenario
 
@@ -157,7 +140,7 @@ Scenario: Successful product deletion
 
 Given the cosmetic product exists in the database
 When the administrator selects the product and clicks the "Delete" button
-Then the system deletes the product
+Then the system removes the cosmetic product from the database
 And displays the message "Product deleted successfully"
 ```
 
@@ -166,7 +149,7 @@ And displays the message "Product deleted successfully"
 ```gherkin
 Feature: Delete a Cosmetic Product
 
-Scenario: Product not found
+Scenario: Deletion fails because the product does not exist
 
 Given the administrator enters a product ID that does not exist
 When the administrator clicks the "Delete" button
