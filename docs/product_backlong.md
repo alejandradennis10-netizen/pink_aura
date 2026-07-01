@@ -40,9 +40,48 @@ And displays the message "Please complete all required fields"
 
 ---
 
-## Epic 2: Cosmetic Update
+## Epic 2: Read Cosmetic Products
 
 ### User Story 2
+
+**As** a system administrator,
+
+**I want** to view the list of cosmetic products,
+
+**So that** I can check the registered products.
+
+### Acceptance Criteria
+
+#### Successful Scenario
+
+```gherkin
+Feature: View Cosmetic Products
+
+Scenario: Successfully display the product list
+
+Given cosmetic products are stored in the database
+When the administrator opens the product list
+Then the system displays all registered cosmetic products
+```
+
+#### Unsuccessful Scenario
+
+```gherkin
+Feature: View Cosmetic Products
+
+Scenario: No cosmetic products available
+
+Given there are no cosmetic products stored in the database
+When the administrator opens the product list
+Then the system displays an empty list
+And displays the message "No products found"
+```
+
+---
+
+## Epic 3: Update Cosmetic Products
+
+### User Story 3
 
 **As** a system administrator,
 
@@ -80,9 +119,9 @@ And displays the message "Product not found"
 
 ---
 
-## Epic 3: Cosmetic Deletion
+## Epic 4: Delete Cosmetic Products
 
-### User Story 3
+### User Story 4
 
 **As** a system administrator,
 
