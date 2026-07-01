@@ -1,4 +1,4 @@
-# Product Backlog - Cosmetics CRUD System
+# Product Backlog - Cosmetics Management System
 
 ## Epic 1: Cosmetic Registration
 
@@ -40,15 +40,15 @@ And displays the message "Please complete all required fields"
 
 ---
 
-## Epic 2: Read Cosmetic Products
+## Epic 2: View Cosmetic Products
 
 ### User Story 2
 
 **As** a system administrator,
 
-**I want** to view the list of cosmetic products,
+**I want** to view all registered cosmetic products,
 
-**So that** I can check the registered products.
+**So that** I can manage the inventory.
 
 ### Acceptance Criteria
 
@@ -57,9 +57,9 @@ And displays the message "Please complete all required fields"
 ```gherkin
 Feature: View Cosmetic Products
 
-Scenario: Successfully display the product list
+Scenario: Display registered products
 
-Given cosmetic products are stored in the database
+Given cosmetic products exist in the database
 When the administrator opens the product list
 Then the system displays all registered cosmetic products
 ```
@@ -69,7 +69,7 @@ Then the system displays all registered cosmetic products
 ```gherkin
 Feature: View Cosmetic Products
 
-Scenario: No cosmetic products available
+Scenario: No products available
 
 Given there are no cosmetic products stored in the database
 When the administrator opens the product list
@@ -85,9 +85,9 @@ And displays the message "No products found"
 
 **As** a system administrator,
 
-**I want** to update the information of a cosmetic product,
+**I want** to update cosmetic product information,
 
-**So that** the inventory information remains accurate.
+**So that** the inventory remains accurate.
 
 ### Acceptance Criteria
 
@@ -98,9 +98,9 @@ Feature: Update a Cosmetic Product
 
 Scenario: Successful update
 
-Given the cosmetic product already exists in the system
+Given the cosmetic product already exists
 When the administrator edits the product information and clicks the "Update" button
-Then the system updates the product information in the database
+Then the system updates the product successfully
 And displays the message "Product updated successfully"
 ```
 
@@ -109,10 +109,10 @@ And displays the message "Product updated successfully"
 ```gherkin
 Feature: Update a Cosmetic Product
 
-Scenario: Update fails because the product does not exist
+Scenario: Product not found
 
-Given the administrator searches for a product using an ID that does not exist
-When the administrator attempts to update the product information
+Given the administrator searches for a product ID that does not exist
+When the administrator attempts to update the product
 Then the system does not update any information
 And displays the message "Product not found"
 ```
@@ -125,9 +125,9 @@ And displays the message "Product not found"
 
 **As** a system administrator,
 
-**I want** to delete a cosmetic product,
+**I want** to delete cosmetic products,
 
-**So that** I can remove products that are no longer available.
+**So that** discontinued products are removed from the inventory.
 
 ### Acceptance Criteria
 
@@ -149,10 +149,84 @@ And displays the message "Product deleted successfully"
 ```gherkin
 Feature: Delete a Cosmetic Product
 
-Scenario: Deletion fails because the product does not exist
+Scenario: Product not found
 
 Given the administrator enters a product ID that does not exist
 When the administrator clicks the "Delete" button
 Then the system does not delete any product
 And displays the message "Product not found"
 ```
+
+---
+
+## Epic 5: Search Cosmetic Products
+
+### User Story 5
+
+**As** a system administrator,
+
+**I want** to search cosmetic products by name or ID,
+
+**So that** I can quickly find a specific product.
+
+### Acceptance Criteria
+
+#### Successful Scenario
+
+```gherkin
+Feature: Search Cosmetic Products
+
+Scenario: Product found
+
+Given cosmetic products exist in the database
+When the administrator searches by product name or ID
+Then the system displays the requested product information
+```
+
+#### Unsuccessful Scenario
+
+```gherkin
+Feature: Search Cosmetic Products
+
+Scenario: Product not found
+
+Given the requested cosmetic product does not exist
+When the administrator performs a search
+Then the system displays the message "Product not found"
+```
+
+---
+
+## Epic 6: Manage Product Categories
+
+### User Story 6
+
+**As** a system administrator,
+
+**I want** to organize products into categories,
+
+**So that** the inventory is easier to manage.
+
+---
+
+## Epic 7: Stock Management
+
+### User Story 7
+
+**As** a system administrator,
+
+**I want** to update product stock,
+
+**So that** I always know the available quantity of each cosmetic product.
+
+---
+
+## Epic 8: Expiration Date Control
+
+### User Story 8
+
+**As** a system administrator,
+
+**I want** to monitor cosmetic product expiration dates,
+
+**So that** expired products can be removed from the inventory before being sold.
