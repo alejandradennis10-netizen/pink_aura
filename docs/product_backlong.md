@@ -1,6 +1,6 @@
-# Product Backlog - Cosmetics Management System
+# Product Backlog - Cosmetics CRUD System
 
-## Epic 1: Cosmetic Registration
+## Epic 1: Create Cosmetic Products
 
 ### User Story 1
 
@@ -12,54 +12,63 @@
 
 ### Acceptance Criteria
 
+- The product name is required.
+- The category, brand, price, stock, and expiration date must be entered.
+- The system must save the product in the database.
+- A confirmation message must be displayed after a successful registration.
+
 #### Successful Scenario
 
 ```gherkin
-Feature: Register a Cosmetic Product
+Feature: Create a Cosmetic Product
 
-Scenario: Successful registration
+Scenario: Successful product registration
 
 Given the administrator is on the product registration form
-When the administrator enters the product name, category, brand, price, stock, and expiration date correctly and clicks the "Save" button
-Then the system saves the cosmetic product in the database
+When the administrator enters valid product information and clicks the "Save" button
+Then the system stores the cosmetic product in the database
 And displays the message "Product registered successfully"
 ```
 
 #### Unsuccessful Scenario
 
 ```gherkin
-Feature: Register a Cosmetic Product
+Feature: Create a Cosmetic Product
 
-Scenario: Registration fails due to missing required fields
+Scenario: Registration fails because required fields are empty
 
 Given the administrator is on the product registration form
 When one or more required fields are left empty and the administrator clicks the "Save" button
-Then the system does not save the cosmetic product
+Then the system does not save the product
 And displays the message "Please complete all required fields"
 ```
 
 ---
 
-## Epic 2: View Cosmetic Products
+## Epic 2: Read Cosmetic Products
 
 ### User Story 2
 
 **As** a system administrator,
 
-**I want** to view all registered cosmetic products,
+**I want** to view the list of cosmetic products,
 
-**So that** I can manage the inventory.
+**So that** I can review the registered products.
 
 ### Acceptance Criteria
+
+- The system must display all registered cosmetic products.
+- Each product must show its basic information.
+- If there are no registered products, the system must notify the administrator.
 
 #### Successful Scenario
 
 ```gherkin
-Feature: View Cosmetic Products
+Feature: Read Cosmetic Products
 
-Scenario: Display registered products
+Scenario: Successfully display the product list
 
-Given cosmetic products exist in the database
+Given cosmetic products are stored in the database
 When the administrator opens the product list
 Then the system displays all registered cosmetic products
 ```
@@ -67,7 +76,7 @@ Then the system displays all registered cosmetic products
 #### Unsuccessful Scenario
 
 ```gherkin
-Feature: View Cosmetic Products
+Feature: Read Cosmetic Products
 
 Scenario: No products available
 
@@ -87,20 +96,24 @@ And displays the message "No products found"
 
 **I want** to update cosmetic product information,
 
-**So that** the inventory remains accurate.
+**So that** I can keep the inventory accurate.
 
 ### Acceptance Criteria
+
+- The administrator must be able to edit an existing product.
+- The updated information must be saved correctly.
+- The system must display a confirmation message after the update.
 
 #### Successful Scenario
 
 ```gherkin
 Feature: Update a Cosmetic Product
 
-Scenario: Successful update
+Scenario: Successful product update
 
 Given the cosmetic product already exists
-When the administrator edits the product information and clicks the "Update" button
-Then the system updates the product successfully
+When the administrator updates the product information and clicks the "Update" button
+Then the system saves the new information
 And displays the message "Product updated successfully"
 ```
 
@@ -131,16 +144,20 @@ And displays the message "Product not found"
 
 ### Acceptance Criteria
 
+- The administrator must be able to delete an existing product.
+- The system must remove the selected product from the database.
+- The system must display a confirmation message after deletion.
+
 #### Successful Scenario
 
 ```gherkin
 Feature: Delete a Cosmetic Product
 
-Scenario: Successful deletion
+Scenario: Successful product deletion
 
 Given the cosmetic product exists in the database
 When the administrator selects the product and clicks the "Delete" button
-Then the system removes the product from the database
+Then the system deletes the product
 And displays the message "Product deleted successfully"
 ```
 
@@ -156,77 +173,3 @@ When the administrator clicks the "Delete" button
 Then the system does not delete any product
 And displays the message "Product not found"
 ```
-
----
-
-## Epic 5: Search Cosmetic Products
-
-### User Story 5
-
-**As** a system administrator,
-
-**I want** to search cosmetic products by name or ID,
-
-**So that** I can quickly find a specific product.
-
-### Acceptance Criteria
-
-#### Successful Scenario
-
-```gherkin
-Feature: Search Cosmetic Products
-
-Scenario: Product found
-
-Given cosmetic products exist in the database
-When the administrator searches by product name or ID
-Then the system displays the requested product information
-```
-
-#### Unsuccessful Scenario
-
-```gherkin
-Feature: Search Cosmetic Products
-
-Scenario: Product not found
-
-Given the requested cosmetic product does not exist
-When the administrator performs a search
-Then the system displays the message "Product not found"
-```
-
----
-
-## Epic 6: Manage Product Categories
-
-### User Story 6
-
-**As** a system administrator,
-
-**I want** to organize products into categories,
-
-**So that** the inventory is easier to manage.
-
----
-
-## Epic 7: Stock Management
-
-### User Story 7
-
-**As** a system administrator,
-
-**I want** to update product stock,
-
-**So that** I always know the available quantity of each cosmetic product.
-
----
-
-## Epic 8: Expiration Date Control
-
-### User Story 8
-
-**As** a system administrator,
-
-**I want** to monitor cosmetic product expiration dates,
-
-**So that** expired products can be removed from the inventory before being sold.
