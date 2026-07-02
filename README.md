@@ -1,4 +1,4 @@
-<img width="1024" height="1024" alt="Gemini_Generated_Image_ypo9idypo9idypo9" src="https://github.com/user-attachments/assets/626b75f0-40ae-4c16-9b01-f98d21f3fb67" />
+<img width="1024" height="1024" alt="Gemini_Generated_Image_4p8dkw4p8dkw4p8d" src="https://github.com/user-attachments/assets/32583ddd-a1a2-4163-94f2-98b779a91e03" />
 
 
 # pink_aura
